@@ -168,6 +168,28 @@ body {
   width: 30%;
   margin-left: 0.5em;
 }
+.cardholder-popover {
+  width: 1rem;
+  position: absolute;
+  top: 12.1rem;
+  left: 9.5rem;
+  opacity: 60%;
+}
+
+.cvv-popover {
+  width: 1rem;
+  position: absolute;
+  top: 12rem;
+  left: 18.5rem;
+  opacity: 60%;
+}
+.cardholder-checked {
+  width: 1rem;
+  position: absolute;
+  top: 20rem;
+  left: 17rem;
+  opacity: 60%;
+}
 
 /* ---------Сard foot part ----------  */
 .card__foot {
