@@ -190,6 +190,18 @@ body {
   left: 17rem;
   opacity: 60%;
 }
+.form-errmesage {
+  position: absolute;
+  left: 1.1rem;
+  color: rgb(228, 49, 49);
+  font-size: 0.8rem;
+}
+.form-errmesage-expaired {
+  position: absolute;
+  left: 16rem;
+  color: rgb(228, 49, 49);
+  font-size: 0.8rem;
+}
 
 /* ---------Сard foot part ----------  */
 .card__foot {

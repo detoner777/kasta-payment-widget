@@ -1,4 +1,7 @@
 import React, { useState, Fragment } from "react";
+import { useForm } from "react-hook-form";
+import { Popover, PopoverBody } from "reactstrap";
+
 import { ReactComponent as KastaLogo } from "../icons/kasta-logo.svg";
 import { ReactComponent as DssLogo } from "../icons/dss-logo.svg";
 import { ReactComponent as MasterCardLogo } from "../icons/mastercard-secure.svg";
@@ -6,7 +9,6 @@ import { ReactComponent as VisaLogo } from "../icons/visa-secure.svg";
 import { ReactComponent as KastaPayLogo } from "../icons/kastapay.svg";
 import { ReactComponent as CreditCardLogo } from "../icons/credit-card.svg";
 import { ReactComponent as QuestinMarkLogo } from "../icons/question-mark.svg";
-import { Popover, PopoverBody } from "reactstrap";
 
 const Widget = ({
   popoverOpenCardholder,
@@ -14,7 +16,10 @@ const Widget = ({
   popoverOpenCvv,
   toggleCvv,
   toggleChecked,
-  popoverOpenChecked
+  popoverOpenChecked,
+  onSubmit,
+  register,
+  errors
 }) => (
   <div className="widget-wrapper">
     <div className="widget__padding">
@@ -37,181 +42,216 @@ const Widget = ({
         <div className="cards">
           <div className="card">
             <div className="card__body">
-            
-              <div className="card__header">
-                <div className="card__header_left">
-                  <div className="card_new_card">
-                    <div className="card__round"></div>
-                    <p>Нова картка</p>
+              <form className="card-form" onSubmit={onSubmit}>
+                <div className="card__header">
+                  <div className="card__header_left">
+                    <div className="card_new_card">
+                      <div className="card__round"></div>
+                      <p>Нова картка</p>
+                    </div>
+
+                    <p>Visa, Mastercard</p>
                   </div>
 
-                  <p>Visa, Mastercard</p>
+                  <CreditCardLogo className="card_data_header_logo" />
                 </div>
+                {/* ------------ Card input data----------- */}
 
-                <CreditCardLogo className="card_data_header_logo" />
-              </div>
-              {/* ------------ Card input data----------- */}
+                <div className="card__data">
+                  <div className="card__row">
+                    <div className="card__col-left validation-wrapper card__cardnumber has-error">
+                      <label
+                        htmlFor="cardpay-cardnumber"
+                        className="label-main control-label"
+                      >
+                        Номер картки
+                      </label>
 
-              <div className="card__data">
-                <div className="card__row">
-                  <div className="card__col-left validation-wrapper card__cardnumber has-error">
-                    <label
-                      htmlFor="cardpay-cardnumber"
-                      className="label-main control-label"
-                    >
-                      Номер картки
-                    </label>
+                      <div className="none">
+                        <input
+                          ref={register({
+                            required: true,
+                            minLength: 16,
+                            maxLength: 16,
+                            pattern: /^[0-9]*$/
+                          })}
+                          maxlength="16"
+                          type="text"
+                          name="cardnumber"
+                          id="cardpay-cardnumber"
+                          className="card__input form-control field-card-number cc-number"
+                          placeholder="XXXX XXXX XXXX XXXX"
+                        />
+                        {errors.cardnumber && (
+                          <p className="form-errmesage">Невірна картка</p>
+                        )}
+                        <i className="card__type"></i>
+                      </div>
+                    </div>
+                    <div className="card__col-right validation-wrapper ">
+                      <label
+                        htmlFor="cardpay-validity"
+                        className="label-main control-label"
+                      >
+                        Термін дії
+                      </label>
 
-                    <div className="none">
                       <input
-                        id="cardpay-cardnumber"
-                        className="card__input form-control field-card-number cc-number"
-                        value=""
-                        placeholder="XXXX XXXX XXXX XXXX"
-                        required=""
+                        name="cardExpire"
+                        type="text"
+                        className="card__input form-control "
+                        placeholder="ММ / РР"
+                        maxlength="5"
+                        ref={register({
+                          required: true,
+                          minLength: 4,
+                          maxLength: 5,
+                          pattern: /^(0[1-9]|1[0-2])\/?(([0-9]{4}|[0-9]{2})$)/
+                        })}
                       />
-                      <i className="card__type"></i>
+                      {errors.cardExpire && (
+                        <p className="form-errmesage-expaired">
+                          Невірний термін
+                        </p>
+                      )}
                     </div>
                   </div>
-                  <div className="card__col-right validation-wrapper ">
-                    <label
-                      htmlFor="cardpay-validity"
-                      className="label-main control-label"
-                    >
-                      Термін дії
-                    </label>
-
-                    <input
-                      id="cardpay-validity"
-                      className="card__input form-control "
-                      name="card[cardValidity]"
-                      placeholder="ММ / РР"
-                      value=""
-                    />
-                  </div>
-                </div>
-                <div className="card__row">
-                  <div className="card__col-left form-group validation-wrapper ">
-                    <label
-                      htmlFor="cardpay-cardholder"
-                      className="label-main control-label"
-                    >
-                      Власник карти
-                    </label>
-                    <div className="cardholder-popover">
-                      {" "}
-                      <QuestinMarkLogo
-                        id="Popover1"
-                        type="button"
-                        className="cardholder-popover-svg"
-                      />{" "}
-                      <Popover
-                        placement="top"
-                        isOpen={popoverOpenCardholder}
-                        target="Popover1"
-                        toggle={toggleCardholder}
+                  <div className="card__row">
+                    <div className="card__col-left form-group validation-wrapper ">
+                      <label
+                        htmlFor="cardpay-cardholder"
+                        className="label-main control-label"
                       >
-                        <PopoverBody>
-                          Фамілія і ім´я людини на яке випущена картка. Для
-                          іменних карток — нанесено на карткy
-                        </PopoverBody>
-                      </Popover>
+                        Власник карти
+                      </label>
+                      <div className="cardholder-popover">
+                        {" "}
+                        <QuestinMarkLogo
+                          id="Popover1"
+                          // type="button"
+                          className="cardholder-popover-svg"
+                        />{" "}
+                        <Popover
+                          placement="top"
+                          isOpen={popoverOpenCardholder}
+                          target="Popover1"
+                          toggle={toggleCardholder}
+                        >
+                          <PopoverBody>
+                            Фамілія і ім´я людини на яке випущена картка. Для
+                            іменних карток — нанесено на карткy
+                          </PopoverBody>
+                        </Popover>
+                      </div>
+
+                      <input
+                        name="cardholderName"
+                        ref={register({
+                          required: true,
+                          minLength: 6,
+                          maxLength: 20,
+                          pattern: /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/
+                        })}
+                        maxlength="20"
+                        id="cardpay-cardholder"
+                        className="card__input form-control text-uppercase"
+                        placeholder="CARDHOLDER NAME"
+                      />
+                      {errors.cardholderName && (
+                        <p className="form-errmesage">
+                          Введіть ПІБ власника картки
+                        </p>
+                      )}
                     </div>
-
-                    <input
-                      id="cardpay-cardholder"
-                      type="text"
-                      className="card__input form-control text-uppercase"
-                      value=""
-                      placeholder="CARDHOLDER NAME"
-                      required=""
-                    />
-                  </div>
-                  <div className="card__col-right form-group validation-wrapper ">
-                    <label
-                      htmlFor="cardpay-cardsecure"
-                      className="label-main control-label"
-                    >
-                      <span>CVV</span>
-                    </label>
-
-                    <div className="cvv-popover">
-                      {" "}
-                      <QuestinMarkLogo
-                        id="Popover2"
-                        type="button"
-                        className="cvv-popover-svg"
-                      />{" "}
-                      <Popover
-                        placement="top"
-                        isOpen={popoverOpenCvv}
-                        target="Popover2"
-                        toggle={toggleCvv}
+                    <div className="card__col-right form-group validation-wrapper ">
+                      <label
+                        htmlFor="cardpay-cardsecure"
+                        className="label-main control-label"
                       >
-                        <PopoverBody>
-                          Останні 3 цифри на зворотній стороні картки
-                        </PopoverBody>
-                      </Popover>
-                    </div>
-                    <input
-                      id="cardpay-cardsecure"
-                      type="tel"
-                      pattern="[0-9]{3}"
-                      inputMode="numeric"
-                      className="card__input form-control field-cvv"
-                      value=""
-                      placeholder="XXX"
-                    />
-                  </div>
-                </div>
-              </div>
-              {/* ------------ Card input data end----------- */}
+                        <span>CVV</span>
+                      </label>
 
-              {/* ---------Сard foot part---------- */}
-              <div className="card__foot">
-                <div className="row form-group card__remember remember">
-                  <div className="col-xs-12 text-center remember__wrap">
-                    <label className="label-normal remember__label">
-                      <input type="checkbox" autoComplete="on" />
-                      <span className="remember_checked">
-                        Запам'ятати цю картку
-                      </span>
-                    </label>
-
-                    <div className="cardholder-checked">
-                      {" "}
-                      <QuestinMarkLogo
-                        id="Popover3"
-                        type="button"
-                        className="cardholder-popover-svg"
-                      />{" "}
-                      <Popover
-                        placement="top"
-                        isOpen={popoverOpenChecked}
-                        target="Popover3"
-                        toggle={toggleChecked}
-                      >
-                        <PopoverBody>
-                          Наступного разу можна буде вибрати збережену карту i
-                          оплатити вводячи тільки CVV
-                        </PopoverBody>
-                      </Popover>
+                      <div className="cvv-popover">
+                        {" "}
+                        <QuestinMarkLogo
+                          id="Popover2"
+                          // type="button"
+                          className="cvv-popover-svg"
+                        />{" "}
+                        <Popover
+                          placement="top"
+                          isOpen={popoverOpenCvv}
+                          target="Popover2"
+                          toggle={toggleCvv}
+                        >
+                          <PopoverBody>
+                            Останні 3 цифри на зворотній стороні картки
+                          </PopoverBody>
+                        </Popover>
+                      </div>
+                      <input
+                        ref={register({
+                          required: true,
+                          minLength: 3,
+                          maxLength: 3,
+                          pattern: /^[0-9]*$/
+                        })}
+                        maxlength="3"
+                        name="cardcvv"
+                        id="cardpay-cardsecure"
+                        className="card__input form-control field-cvv"
+                        placeholder="XXX"
+                      />
                     </div>
                   </div>
                 </div>
-                <div className="form-actions">
-                  <button type="submit" className="btn-pay btn-block btn-lg">
-                    Оплатити <span>123 284</span>&nbsp;UAH{" "}
-                  </button>
-                  <p className="end_timer text-center">
-                    <span>Час до завершення платежу </span>
-                    <span>00:11:29</span>
-                  </p>
-                </div>
-              </div>
+                {/* ------------ Card input data end----------- */}
 
-              {/* ---------Сard foot part ends---------- */}
-              {/* </form> */}
+                {/* ---------Сard foot part---------- */}
+                <div className="card__foot">
+                  <div className="row form-group card__remember remember">
+                    <div className="col-xs-12 text-center remember__wrap">
+                      <label className="label-normal remember__label">
+                        <input type="checkbox" autoComplete="on" />
+                        <span className="remember_checked">
+                          Запам'ятати цю картку
+                        </span>
+                      </label>
+
+                      <div className="cardholder-checked">
+                        {" "}
+                        <QuestinMarkLogo
+                          id="Popover3"
+                          // type="button"
+                          className="cardholder-popover-svg"
+                        />{" "}
+                        <Popover
+                          placement="top"
+                          isOpen={popoverOpenChecked}
+                          target="Popover3"
+                          toggle={toggleChecked}
+                        >
+                          <PopoverBody>
+                            Наступного разу можна буде вибрати збережену карту i
+                            оплатити вводячи тільки CVV
+                          </PopoverBody>
+                        </Popover>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="form-actions">
+                    <button type="submit" className="btn-pay btn-block btn-lg">
+                      Оплатити <span>123 284</span>&nbsp;UAH{" "}
+                    </button>
+                    <p className="end_timer text-center">
+                      <span>Час до завершення платежу </span>
+                      <span>00:11:29</span>
+                    </p>
+                  </div>
+                </div>
+
+                {/* ---------Сard foot part ends---------- */}
+              </form>
             </div>
           </div>
         </div>
@@ -239,6 +279,7 @@ const Widget = ({
 );
 
 const PaymentWidget = () => {
+  //popover
   const [popoverOpenCardholder, setPopoverOpenCardholder] = useState(false);
   const [popoverOpenCvv, setPopoverOpenCvv] = useState(false);
   const [popoverOpenChecked, setPopoverOpenChecked] = useState(false);
@@ -248,15 +289,26 @@ const PaymentWidget = () => {
   const toggleCvv = () => setPopoverOpenCvv(!popoverOpenCvv);
   const toggleChecked = () => setPopoverOpenChecked(!popoverOpenChecked);
 
+  //validation
+  const { register, handleSubmit, errors } = useForm();
+  const onSubmit = data => {
+    console.log(data);
+  };
+
   return (
     <Fragment>
       <Widget
+        // popovers
         popoverOpenCardholder={popoverOpenCardholder}
         toggleCardholder={toggleCardholder}
         popoverOpenCvv={popoverOpenCvv}
         toggleCvv={toggleCvv}
         popoverOpenChecked={popoverOpenChecked}
         toggleChecked={toggleChecked}
+        // form validation, submition
+        onSubmit={handleSubmit(onSubmit)}
+        register={register}
+        errors={errors}
       />
     </Fragment>
   );
