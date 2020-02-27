@@ -304,3 +304,8 @@ body {
   background-color: #2a2c30;
   display: block;
 }
+
+/* -------------Payment success message----------------- */
+.payment-success-message {
+  padding-top: 12rem;
+}

@@ -1,6 +1,14 @@
 import React, { useState, Fragment } from "react";
 import { useForm } from "react-hook-form";
-import { Popover, PopoverBody } from "reactstrap";
+import {
+  Popover,
+  PopoverBody,
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter
+} from "reactstrap";
 
 import { ReactComponent as KastaLogo } from "../icons/kasta-logo.svg";
 import { ReactComponent as DssLogo } from "../icons/dss-logo.svg";
@@ -278,6 +286,22 @@ const Widget = ({
   </div>
 );
 
+const ModalExample = ({ modal, toggle }) => {
+  return (
+    <div>
+      <Modal isOpen={modal} toggle={toggle} className='payment-success-message'>
+        <ModalHeader toggle={toggle}>Успішна оплата</ModalHeader>
+        <ModalBody>Ваш платіж успішно проведений!</ModalBody>
+        <ModalFooter>
+          <Button color="success" onClick={toggle}>
+            Ok
+          </Button>
+        </ModalFooter>
+      </Modal>
+    </div>
+  );
+};
+
 const PaymentWidget = () => {
   //popover
   const [popoverOpenCardholder, setPopoverOpenCardholder] = useState(false);
@@ -293,10 +317,15 @@ const PaymentWidget = () => {
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = data => {
     console.log(data);
+    setModal(!modal);
   };
+  //modal
+  const [modal, setModal] = useState(false);
+  const toggle = () => setModal(!modal);
 
   return (
     <Fragment>
+      <ModalExample toggle={toggle} modal={modal} setModal={setModal} />
       <Widget
         // popovers
         popoverOpenCardholder={popoverOpenCardholder}
@@ -310,6 +339,7 @@ const PaymentWidget = () => {
         register={register}
         errors={errors}
       />
+      {/* modal */}
     </Fragment>
   );
 };
