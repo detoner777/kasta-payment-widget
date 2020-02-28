@@ -12,7 +12,6 @@ body {
   height: 90%;
   top: 20px;
   left: 50%;
-  z-index: 3;
   transform: translateX(-50%);
 }
 
@@ -161,6 +160,7 @@ body {
   font-size: 20px;
 }
 .card__col-left {
+  display: block;
   width: 70%;
 }
 
@@ -168,28 +168,37 @@ body {
   width: 30%;
   margin-left: 0.5em;
 }
-.cardholder-popover {
-  width: 1rem;
-  position: absolute;
-  top: 12.1rem;
-  left: 9.5rem;
+
+/* -----------popover wrap ---------------- */
+.popover-wrap {
+  display: flex;
+  justify-items: auto;
+}
+
+.popover-svg {
   opacity: 60%;
 }
 
+.popover-svg:hover {
+  cursor: pointer;
+  opacity: 99%;
+}
+.cardholder-popover {
+  width: 0.9rem;
+  margin-left: 3%;
+  margin-top: -1%;
+}
 .cvv-popover {
-  width: 1rem;
-  position: absolute;
-  top: 12rem;
-  left: 18.5rem;
-  opacity: 60%;
+  width: 0.9rem;
+  margin-left: 5%;
+  margin-top: -3%;
 }
 .cardholder-checked {
-  width: 1rem;
-  position: absolute;
-  top: 20rem;
-  left: 17rem;
-  opacity: 60%;
+  width: 0.9rem;
+  margin-left: 2%;
+  margin-top: -5%;
 }
+
 .form-errmesage {
   position: absolute;
   left: 1.1rem;
@@ -198,7 +207,7 @@ body {
 }
 .form-errmesage-expaired {
   position: absolute;
-  left: 16rem;
+  left: 70%;
   color: rgb(228, 49, 49);
   font-size: 0.8rem;
 }
@@ -238,10 +247,17 @@ body {
   box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.14),
     0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2); /* z-depth-3 */
 }
+
+.remember__wrap {
+  display: flex;
+  justify-items: auto;
+}
 .remember_checked {
   font-size: 15px;
-  margin-left: 2px;
+  margin-left: 0.3rem;
+  margin-top: -0.3rem;
 }
+
 .end_timer {
   padding-top: 10px;
   font-size: 11px;
@@ -308,4 +324,37 @@ body {
 /* -------------Payment success message----------------- */
 .payment-success-message {
   padding-top: 12rem;
+}
+
+/* ---------------Responsiveness---------------- */
+
+@media (min-width: 320px) and (max-width: 560px) {
+  .body {
+    font-size: 1rem;
+  }
+  .control-label {
+    font-size: 1rem;
+  }
+  .btn-pay {
+    height: 3rem;
+    font-size: 0.9rem;
+  }
+  .card__data {
+    font-size: 0.5rem;
+  }
+  .form-errmesage-expaired {
+    font-size: 0.6rem;
+  }
+  .form-errmesage {
+    font-size: 0.6rem;
+  }
+  .card__input {
+    font-size: 0.8rem;
+  }
+  .cardholder-popover {
+    margin-top: 3%;
+  }
+  .cvv-popover {
+    margin-top: 5.5%;
+  }
 }

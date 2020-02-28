@@ -1,10 +1,10 @@
 import React from "react";
-import PaymentWidget from "./component/PaymentWidget";
+import MainComponent from "./component/MainComponent";
 
 function App() {
   return (
     <div className="container">
-      <PaymentWidget />
+      <MainComponent />
     </div>
   );
 }

@@ -1,14 +1,5 @@
-import React, { useState, Fragment } from "react";
-import { useForm } from "react-hook-form";
-import {
-  Popover,
-  PopoverBody,
-  Button,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter
-} from "reactstrap";
+import React from "react";
+import { Popover, PopoverBody } from "reactstrap";
 
 import { ReactComponent as KastaLogo } from "../icons/kasta-logo.svg";
 import { ReactComponent as DssLogo } from "../icons/dss-logo.svg";
@@ -18,7 +9,7 @@ import { ReactComponent as KastaPayLogo } from "../icons/kastapay.svg";
 import { ReactComponent as CreditCardLogo } from "../icons/credit-card.svg";
 import { ReactComponent as QuestinMarkLogo } from "../icons/question-mark.svg";
 
-const Widget = ({
+export const Widget = ({
   popoverOpenCardholder,
   toggleCardholder,
   popoverOpenCvv,
@@ -57,24 +48,21 @@ const Widget = ({
                       <div className="card__round"></div>
                       <p>Нова картка</p>
                     </div>
-
                     <p>Visa, Mastercard</p>
                   </div>
-
                   <CreditCardLogo className="card_data_header_logo" />
                 </div>
                 {/* ------------ Card input data----------- */}
 
                 <div className="card__data">
                   <div className="card__row">
-                    <div className="card__col-left validation-wrapper card__cardnumber has-error">
+                    <div className="card__col-left ">
                       <label
                         htmlFor="cardpay-cardnumber"
                         className="label-main control-label"
                       >
                         Номер картки
                       </label>
-
                       <div className="none">
                         <input
                           ref={register({
@@ -83,7 +71,7 @@ const Widget = ({
                             maxLength: 16,
                             pattern: /^[0-9]*$/
                           })}
-                          maxlength="16"
+                          maxLength="16"
                           type="text"
                           name="cardnumber"
                           id="cardpay-cardnumber"
@@ -96,20 +84,19 @@ const Widget = ({
                         <i className="card__type"></i>
                       </div>
                     </div>
-                    <div className="card__col-right validation-wrapper ">
+                    <div className="card__col-right ">
                       <label
                         htmlFor="cardpay-validity"
                         className="label-main control-label"
                       >
                         Термін дії
                       </label>
-
                       <input
                         name="cardExpire"
                         type="text"
                         className="card__input form-control "
                         placeholder="ММ / РР"
-                        maxlength="5"
+                        maxLength="5"
                         ref={register({
                           required: true,
                           minLength: 4,
@@ -125,31 +112,34 @@ const Widget = ({
                     </div>
                   </div>
                   <div className="card__row">
-                    <div className="card__col-left form-group validation-wrapper ">
-                      <label
-                        htmlFor="cardpay-cardholder"
-                        className="label-main control-label"
-                      >
-                        Власник карти
-                      </label>
-                      <div className="cardholder-popover">
+                    <div className="card__col-left form-group">
+                      <div className="popover-wrap">
                         {" "}
-                        <QuestinMarkLogo
-                          id="Popover1"
-                          // type="button"
-                          className="cardholder-popover-svg"
-                        />{" "}
-                        <Popover
-                          placement="top"
-                          isOpen={popoverOpenCardholder}
-                          target="Popover1"
-                          toggle={toggleCardholder}
+                        <label
+                          htmlFor="cardpay-cardholder"
+                          className="label-main control-label"
                         >
-                          <PopoverBody>
-                            Фамілія і ім´я людини на яке випущена картка. Для
-                            іменних карток — нанесено на карткy
-                          </PopoverBody>
-                        </Popover>
+                          Власник карти
+                        </label>
+                        <div className="cardholder-popover">
+                          {" "}
+                          <QuestinMarkLogo
+                            id="Popover1"
+                            // type="button"
+                            className="popover-svg"
+                          />{" "}
+                          <Popover
+                            placement="top"
+                            isOpen={popoverOpenCardholder}
+                            target="Popover1"
+                            toggle={toggleCardholder}
+                          >
+                            <PopoverBody>
+                              Фамілія і ім´я людини на яке випущена картка. Для
+                              іменних карток — нанесено на карткy
+                            </PopoverBody>
+                          </Popover>
+                        </div>
                       </div>
 
                       <input
@@ -160,7 +150,7 @@ const Widget = ({
                           maxLength: 20,
                           pattern: /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/
                         })}
-                        maxlength="20"
+                        maxLength="20"
                         id="cardpay-cardholder"
                         className="card__input form-control text-uppercase"
                         placeholder="CARDHOLDER NAME"
@@ -171,32 +161,35 @@ const Widget = ({
                         </p>
                       )}
                     </div>
-                    <div className="card__col-right form-group validation-wrapper ">
-                      <label
-                        htmlFor="cardpay-cardsecure"
-                        className="label-main control-label"
-                      >
-                        <span>CVV</span>
-                      </label>
-
-                      <div className="cvv-popover">
+                    <div className="card__col-right form-group">
+                      <div className="popover-wrap">
                         {" "}
-                        <QuestinMarkLogo
-                          id="Popover2"
-                          // type="button"
-                          className="cvv-popover-svg"
-                        />{" "}
-                        <Popover
-                          placement="top"
-                          isOpen={popoverOpenCvv}
-                          target="Popover2"
-                          toggle={toggleCvv}
+                        <label
+                          htmlFor="cardpay-cardsecure"
+                          className="label-main control-label"
                         >
-                          <PopoverBody>
-                            Останні 3 цифри на зворотній стороні картки
-                          </PopoverBody>
-                        </Popover>
+                          <span>CVV</span>
+                        </label>
+                        <div className="cvv-popover">
+                          {" "}
+                          <QuestinMarkLogo
+                            id="Popover2"
+                            // type="button"
+                            className="popover-svg"
+                          />{" "}
+                          <Popover
+                            placement="top"
+                            isOpen={popoverOpenCvv}
+                            target="Popover2"
+                            toggle={toggleCvv}
+                          >
+                            <PopoverBody>
+                              Останні 3 цифри на зворотній стороні картки
+                            </PopoverBody>
+                          </Popover>
+                        </div>
                       </div>
+
                       <input
                         ref={register({
                           required: true,
@@ -204,7 +197,7 @@ const Widget = ({
                           maxLength: 3,
                           pattern: /^[0-9]*$/
                         })}
-                        maxlength="3"
+                        maxLength="3"
                         name="cardcvv"
                         id="cardpay-cardsecure"
                         className="card__input form-control field-cvv"
@@ -218,35 +211,36 @@ const Widget = ({
                 {/* ---------Сard foot part---------- */}
                 <div className="card__foot">
                   <div className="row form-group card__remember remember">
-                    <div className="col-xs-12 text-center remember__wrap">
-                      <label className="label-normal remember__label">
+                    <div className="col-xs-12 popover-wrap">
+                      <label className="label-normal remember__wrap">
                         <input type="checkbox" autoComplete="on" />
                         <span className="remember_checked">
                           Запам'ятати цю картку
                         </span>
                       </label>
+                    </div>
 
-                      <div className="cardholder-checked">
-                        {" "}
-                        <QuestinMarkLogo
-                          id="Popover3"
-                          // type="button"
-                          className="cardholder-popover-svg"
-                        />{" "}
-                        <Popover
-                          placement="top"
-                          isOpen={popoverOpenChecked}
-                          target="Popover3"
-                          toggle={toggleChecked}
-                        >
-                          <PopoverBody>
-                            Наступного разу можна буде вибрати збережену карту i
-                            оплатити вводячи тільки CVV
-                          </PopoverBody>
-                        </Popover>
-                      </div>
+                    <div className="cardholder-checked">
+                      {" "}
+                      <QuestinMarkLogo
+                        id="Popover3"
+                        // type="button"
+                        className="popover-svg"
+                      />{" "}
+                      <Popover
+                        placement="top"
+                        isOpen={popoverOpenChecked}
+                        target="Popover3"
+                        toggle={toggleChecked}
+                      >
+                        <PopoverBody>
+                          Наступного разу можна буде вибрати збережену карту i
+                          оплатити вводячи тільки CVV
+                        </PopoverBody>
+                      </Popover>
                     </div>
                   </div>
+
                   <div className="form-actions">
                     <button type="submit" className="btn-pay btn-block btn-lg">
                       Оплатити <span>123 284</span>&nbsp;UAH{" "}
@@ -257,14 +251,12 @@ const Widget = ({
                     </p>
                   </div>
                 </div>
-
                 {/* ---------Сard foot part ends---------- */}
               </form>
             </div>
           </div>
         </div>
       </div>
-
       {/* ----------Card Content end------------ */}
       {/* ------------Footer----------- */}
       <div className="footer">
@@ -285,62 +277,3 @@ const Widget = ({
     </div>
   </div>
 );
-
-const ModalExample = ({ modal, toggle }) => {
-  return (
-    <div>
-      <Modal isOpen={modal} toggle={toggle} className='payment-success-message'>
-        <ModalHeader toggle={toggle}>Успішна оплата</ModalHeader>
-        <ModalBody>Ваш платіж успішно проведений!</ModalBody>
-        <ModalFooter>
-          <Button color="success" onClick={toggle}>
-            Ok
-          </Button>
-        </ModalFooter>
-      </Modal>
-    </div>
-  );
-};
-
-const PaymentWidget = () => {
-  //popover
-  const [popoverOpenCardholder, setPopoverOpenCardholder] = useState(false);
-  const [popoverOpenCvv, setPopoverOpenCvv] = useState(false);
-  const [popoverOpenChecked, setPopoverOpenChecked] = useState(false);
-
-  const toggleCardholder = () =>
-    setPopoverOpenCardholder(!popoverOpenCardholder);
-  const toggleCvv = () => setPopoverOpenCvv(!popoverOpenCvv);
-  const toggleChecked = () => setPopoverOpenChecked(!popoverOpenChecked);
-
-  //validation
-  const { register, handleSubmit, errors } = useForm();
-  const onSubmit = data => {
-    console.log(data);
-    setModal(!modal);
-  };
-  //modal
-  const [modal, setModal] = useState(false);
-  const toggle = () => setModal(!modal);
-
-  return (
-    <Fragment>
-      <ModalExample toggle={toggle} modal={modal} setModal={setModal} />
-      <Widget
-        // popovers
-        popoverOpenCardholder={popoverOpenCardholder}
-        toggleCardholder={toggleCardholder}
-        popoverOpenCvv={popoverOpenCvv}
-        toggleCvv={toggleCvv}
-        popoverOpenChecked={popoverOpenChecked}
-        toggleChecked={toggleChecked}
-        // form validation, submition
-        onSubmit={handleSubmit(onSubmit)}
-        register={register}
-        errors={errors}
-      />
-      {/* modal */}
-    </Fragment>
-  );
-};
-export default PaymentWidget;
