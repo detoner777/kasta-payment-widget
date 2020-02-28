@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/kasta-payment-widget/static/css/main.0c0ca1c2.chunk.css",
-    "main.js": "/kasta-payment-widget/static/js/main.f04666de.chunk.js",
-    "main.js.map": "/kasta-payment-widget/static/js/main.f04666de.chunk.js.map",
+    "main.js": "/kasta-payment-widget/static/js/main.77b43909.chunk.js",
+    "main.js.map": "/kasta-payment-widget/static/js/main.77b43909.chunk.js.map",
     "runtime-main.js": "/kasta-payment-widget/static/js/runtime-main.d6b3b37e.js",
     "runtime-main.js.map": "/kasta-payment-widget/static/js/runtime-main.d6b3b37e.js.map",
     "static/js/2.05893fb9.chunk.js": "/kasta-payment-widget/static/js/2.05893fb9.chunk.js",
     "static/js/2.05893fb9.chunk.js.map": "/kasta-payment-widget/static/js/2.05893fb9.chunk.js.map",
     "index.html": "/kasta-payment-widget/index.html",
-    "precache-manifest.5abf9084115a8b8cc53933010f2c5598.js": "/kasta-payment-widget/precache-manifest.5abf9084115a8b8cc53933010f2c5598.js",
+    "precache-manifest.ee97c9411ccb82cf725e655e1a3cdd0a.js": "/kasta-payment-widget/precache-manifest.ee97c9411ccb82cf725e655e1a3cdd0a.js",
     "service-worker.js": "/kasta-payment-widget/service-worker.js",
     "static/css/main.0c0ca1c2.chunk.css.map": "/kasta-payment-widget/static/css/main.0c0ca1c2.chunk.css.map",
     "static/js/2.05893fb9.chunk.js.LICENSE.txt": "/kasta-payment-widget/static/js/2.05893fb9.chunk.js.LICENSE.txt",
@@ -24,6 +24,6 @@
     "static/js/runtime-main.d6b3b37e.js",
     "static/js/2.05893fb9.chunk.js",
     "static/css/main.0c0ca1c2.chunk.css",
-    "static/js/main.f04666de.chunk.js"
+    "static/js/main.77b43909.chunk.js"
   ]
 }
