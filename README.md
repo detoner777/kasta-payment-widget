@@ -2,15 +2,15 @@
 [DEMO link](https://detoner777.github.io/kasta-payment-widget/)
 Payment widget with fields validation and adaptive layout
 
-# Use npm - install to setup all dependency
+# Use npm - install to setup all dependencies
 
-## Tech used in progect
+## Techs used in project
 - react
 - reactstrap
 - react-awesome-popover
 - react-hook-form
 
-## Deployment by
+## Deployment to
 https://pages.github.com/
 
 
