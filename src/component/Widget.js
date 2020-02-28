@@ -147,10 +147,10 @@ export const Widget = ({
                         ref={register({
                           required: true,
                           minLength: 6,
-                          maxLength: 20,
-                          pattern: /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/
+                          maxLength: 30,
+                          pattern: /^[a-zа-яё\sыа-щА-ЩЬьЮюЯяЇїІіЄєҐґ']+$/iu
                         })}
-                        maxLength="20"
+                        maxLength="30"
                         id="cardpay-cardholder"
                         className="card__input form-control text-uppercase"
                         placeholder="CARDHOLDER NAME"
