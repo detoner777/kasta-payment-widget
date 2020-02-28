@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/kasta-payment-widget/static/css/main.8d174728.chunk.css",
+    "main.css": "/kasta-payment-widget/static/css/main.0c0ca1c2.chunk.css",
     "main.js": "/kasta-payment-widget/static/js/main.f04666de.chunk.js",
     "main.js.map": "/kasta-payment-widget/static/js/main.f04666de.chunk.js.map",
     "runtime-main.js": "/kasta-payment-widget/static/js/runtime-main.d6b3b37e.js",
@@ -8,9 +8,9 @@
     "static/js/2.05893fb9.chunk.js": "/kasta-payment-widget/static/js/2.05893fb9.chunk.js",
     "static/js/2.05893fb9.chunk.js.map": "/kasta-payment-widget/static/js/2.05893fb9.chunk.js.map",
     "index.html": "/kasta-payment-widget/index.html",
-    "precache-manifest.2ec2f02052ec3cbb8f3a7b45a9f02ebd.js": "/kasta-payment-widget/precache-manifest.2ec2f02052ec3cbb8f3a7b45a9f02ebd.js",
+    "precache-manifest.5abf9084115a8b8cc53933010f2c5598.js": "/kasta-payment-widget/precache-manifest.5abf9084115a8b8cc53933010f2c5598.js",
     "service-worker.js": "/kasta-payment-widget/service-worker.js",
-    "static/css/main.8d174728.chunk.css.map": "/kasta-payment-widget/static/css/main.8d174728.chunk.css.map",
+    "static/css/main.0c0ca1c2.chunk.css.map": "/kasta-payment-widget/static/css/main.0c0ca1c2.chunk.css.map",
     "static/js/2.05893fb9.chunk.js.LICENSE.txt": "/kasta-payment-widget/static/js/2.05893fb9.chunk.js.LICENSE.txt",
     "static/media/credit-card.505be85d.svg": "/kasta-payment-widget/static/media/credit-card.505be85d.svg",
     "static/media/dss-logo.2178f575.svg": "/kasta-payment-widget/static/media/dss-logo.2178f575.svg",
@@ -23,7 +23,7 @@
   "entrypoints": [
     "static/js/runtime-main.d6b3b37e.js",
     "static/js/2.05893fb9.chunk.js",
-    "static/css/main.8d174728.chunk.css",
+    "static/css/main.0c0ca1c2.chunk.css",
     "static/js/main.f04666de.chunk.js"
   ]
 }

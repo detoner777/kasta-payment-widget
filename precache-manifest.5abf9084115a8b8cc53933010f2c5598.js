@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "200def3313a671bc27087a2a6c748d40",
+    "revision": "f342e05c02f84195a4afae923100cbdb",
     "url": "/kasta-payment-widget/index.html"
   },
   {
-    "revision": "51f615e2b89f4090b98b",
-    "url": "/kasta-payment-widget/static/css/main.8d174728.chunk.css"
+    "revision": "981755457adc430e96b6",
+    "url": "/kasta-payment-widget/static/css/main.0c0ca1c2.chunk.css"
   },
   {
     "revision": "ab93d7f24127adbb7b0a",
@@ -16,7 +16,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/kasta-payment-widget/static/js/2.05893fb9.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "51f615e2b89f4090b98b",
+    "revision": "981755457adc430e96b6",
     "url": "/kasta-payment-widget/static/js/main.f04666de.chunk.js"
   },
   {
