@@ -175,13 +175,14 @@ body {
   justify-items: auto;
 }
 
-.popover-svg {
+/* .popover-svg {
   opacity: 60%;
-}
+} */
 
 .popover-svg:hover {
   cursor: pointer;
-  opacity: 99%;
+  /* opacity: 99%; */
+  width: 105%;
 }
 .cardholder-popover {
   width: 0.9rem;
